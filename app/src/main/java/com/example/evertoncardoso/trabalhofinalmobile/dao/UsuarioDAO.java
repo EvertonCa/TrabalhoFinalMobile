@@ -70,7 +70,7 @@ public class UsuarioDAO {
 
 
     // Retorna uma lista com todos os autores
-    public List<Usuario> listarAutores() {
+    public List<Usuario> listarUsuarios() {
         Cursor c = db.query("usuario", new String[]{"_id", "login", "password", "nome", "telefone"}, null, null, null, null, null, null);
 
         List<Usuario> usuarios = new ArrayList<Usuario>();
@@ -106,7 +106,7 @@ public class UsuarioDAO {
 
 
     // Busca o autor pelo id
-    public Usuario buscarAutor(long id) {
+    public Usuario buscarUsuario(long id) {
         // select * from autor where _id=?
         Cursor c = db.query(true, "usuario",  new String[] { "_id", "login", "password", "nome", "telefone" },  "_id" + "=" + id, null, null, null, null, null);
 
@@ -131,13 +131,13 @@ public class UsuarioDAO {
     }
 
 
-    // Busca o autor pelo nome "select * from autor where nome=?"
-    public Usuario buscarAutorPorNome(String nome) {
+    // Busca o autor pelo nome "select * from autor where login=?"
+    public Usuario buscarUsuarioPorLogin(String login) {
         Usuario pessoa = null;
 
         try {
             // Idem a: SELECT _id,nome,placa,ano from autor where nome = ?
-            Cursor c = db.query("usuario", new String[] { "_id", "login", "password", "nome", "telefone" }, "nome" + "='" + nome + "'", null, null, null, null);
+            Cursor c = db.query("usuario", new String[] { "_id", "login", "password", "nome", "telefone" }, "login" + "='" + login + "'", null, null, null, null);
 
 
             if (c.moveToNext()) {
@@ -152,7 +152,7 @@ public class UsuarioDAO {
                 pessoa.setTelefone(c.getString(4));
             }
         } catch (SQLException e) {
-            Log.e(CATEGORIA, "Erro ao buscar o autor pelo nome: " + e.toString());
+            Log.e(CATEGORIA, "Erro ao buscar o usuario pelo login: " + e.toString());
             return null;
         }
 
