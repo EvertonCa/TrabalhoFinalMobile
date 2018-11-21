@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Trabalho Final Mobile</string>
+    <string name="logotipo">logotipo</string>
+    <string name="usuario">Usuário</string>
+    <string name="senha">Senha</string>
+    <string name="sign_in">Sign In</string>
+    <string name="log_in">Log In</string>
+    <string name="esqueci_minha_senha">Esqueci Minha Senha</string>
 </resources>
