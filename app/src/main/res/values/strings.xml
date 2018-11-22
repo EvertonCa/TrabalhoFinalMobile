@@ -17,4 +17,7 @@
     <string name="o_valor_atual_na_sua_conta">O Valor atual na sua conta é:</string>
     <string name="transa_es">Transações</string>
     <string name="confirma">Confirma</string>
+    <string name="selecione_uma_data">Selecione uma data</string>
+    <string name="name">Name</string>
+    <string name="descreva_a_transa_o">Descreva a transação:</string>
 </resources>
