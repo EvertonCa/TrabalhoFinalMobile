@@ -17,4 +17,7 @@
     <string name="dinheiro">Dinheiro</string>
     <string name="email">Email</string>
     <string name="enviar">Enviar</string>
+    <string name="dolar">Dolar</string>
+    <string name="bolsaValores">Bolsa de valores</string>
+    <string name="gps">GPS</string>
 </resources>
