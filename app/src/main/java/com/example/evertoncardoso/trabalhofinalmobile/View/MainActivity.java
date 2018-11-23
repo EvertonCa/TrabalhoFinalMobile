@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return resposta;
     }
-
+    //comentário zika do role que vai fazer com que eu possa dar push
     public String descriptografaSenha(String cripto){
         int k = 10;
         int original;
