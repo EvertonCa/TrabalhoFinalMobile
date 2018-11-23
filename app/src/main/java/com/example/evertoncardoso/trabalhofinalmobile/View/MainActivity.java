@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.LogInController;
+import com.example.evertoncardoso.trabalhofinalmobile.Database.DataBase;
+import com.example.evertoncardoso.trabalhofinalmobile.Model.Item;
 import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 
@@ -15,20 +18,18 @@ public class MainActivity extends AppCompatActivity {
     EditText login;
     EditText password;
 
+    public static Usuario usuarioLogado;
+
+    DataBase db = new DataBase(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // Cancela para nao ficar nada pendente na tela
-        setResult(RESULT_CANCELED);
+        //db.addUsuario(new Usuario("admin", "senhaAdmin", "Nome", "Telefone", "email", "endereco/fotos"));
 
-        // Fecha a tela
-        finish();
+        //Toast.makeText(MainActivity.this, "Salvo com Sucesso!", Toast.LENGTH_LONG).show();
     }
 
     public void verificaLogin(View view)
@@ -37,29 +38,21 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.campoSenha);
 
         String strLogin = login.getText().toString();
-        String strPassword = login.getText().toString();
+        String strPassword = password.getText().toString();
 
-        Usuario usuario;
+        Usuario usuario = LogInController.verificaLogIn(db, strLogin, strPassword);
 
-        if(CadastrarActivity.usuarioDAO.buscarUsuarioPorLogin(strLogin) != null)
+        if(usuario == null)
         {
-            usuario = CadastrarActivity.usuarioDAO.buscarUsuarioPorLogin(strLogin);
-
-            if(usuario != null)
-            {
-                if(strPassword.equals(usuario.getPassword()))
-                {
-                    chamaMenuPrincipal();
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this, "Senha INCORRETA", Toast.LENGTH_SHORT).show();
-                }
-            }
+            Toast.makeText(MainActivity.this, "Usuário ou Senha Incorreto(s)!", Toast.LENGTH_LONG).show();
+            login.setText("");
+            password.setText("");
         }
         else
         {
-            Toast.makeText(MainActivity.this, "Login NÃO ENCONTRADO", Toast.LENGTH_SHORT).show();
+            usuarioLogado = usuario;
+            LogInController.preencheListaItems(db, usuarioLogado);
+            chamaMenuPrincipal();
         }
     }
 
