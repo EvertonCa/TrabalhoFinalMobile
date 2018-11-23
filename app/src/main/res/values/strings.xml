@@ -18,4 +18,8 @@
     <string name="email">Email</string>
     <string name="enviar">Enviar</string>
     <string name="splashlogo">SplashLogo</string>
+    <string name="qual_o_intervalo_de_pesquisa">Qual o intervalo de pesquisa?</string>
+    <string name="data_inicial">Data inicial</string>
+    <string name="data_final">Data Final</string>
+    <string name="ir">IR</string>
 </resources>

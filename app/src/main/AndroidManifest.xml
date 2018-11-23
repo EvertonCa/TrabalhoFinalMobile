@@ -19,6 +19,7 @@
         <activity android:name=".View.MainActivity"/>
         <activity android:name=".View.TelaInicialActivity"/>
         <activity android:name=".View.esqueciSenhaActivity"/>
+        <activity android:name=".View.PesquisarActivity"/>
     </application>
 
 </manifest>
