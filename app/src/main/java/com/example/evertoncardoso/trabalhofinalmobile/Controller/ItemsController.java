@@ -28,4 +28,14 @@ public class ItemsController {
     {
         MainActivity.db.atualizaItem(item, MainActivity.db.criaNomeTabelaUsuario(MainActivity.usuarioLogado.getId()));
     }
+
+    public static void apagaItem(Item item)
+    {
+        MainActivity.db.apagarItem(item, MainActivity.db.criaNomeTabelaUsuario(MainActivity.usuarioLogado.getId()));
+    }
+
+    public static List<Item> listarItens()
+    {
+        return MainActivity.db.listarTodosItems(MainActivity.db.criaNomeTabelaUsuario(MainActivity.usuarioLogado.getId()));
+    }
 }
