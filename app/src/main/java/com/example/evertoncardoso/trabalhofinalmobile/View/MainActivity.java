@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.evertoncardoso.trabalhofinalmobile.Controller.LogInController;
@@ -17,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText login;
     EditText password;
+    Button button;
+    TextView labelEsqueciSenha;
 
     public static Usuario usuarioLogado;
 
@@ -26,6 +30,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        button = findViewById(R.id.button);
+        labelEsqueciSenha = findViewById(R.id.labelEsqueciSenha);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chamaMenuPrincipal();
+            }
+        });
+        labelEsqueciSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chamaEsqueciSenha();
+            }
+        });
+
+
+    }
 
         //db.addUsuario(new Usuario("admin", "senhaAdmin", "Nome", "Telefone", "email", "endereco/fotos"));
 
@@ -58,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void chamaMenuPrincipal()
     {
-        //startActivity(new Intent(this, MenuPrincipal.class));
+        startActivity(new Intent(this, TelaInicialActivity.class));
+    }
+    public void chamaEsqueciSenha()
+    {
+        startActivity(new Intent(this, esqueciSenhaActivity.class));
     }
 }
