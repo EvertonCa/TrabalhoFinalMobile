@@ -3,15 +3,17 @@ package com.example.evertoncardoso.trabalhofinalmobile.View;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.AES;
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.ItemsController;
 import com.example.evertoncardoso.trabalhofinalmobile.Controller.LogInController;
 import com.example.evertoncardoso.trabalhofinalmobile.Database.DataBase;
-import com.example.evertoncardoso.trabalhofinalmobile.Model.Item;
 import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 
@@ -24,11 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static Usuario usuarioLogado;
 
-    DataBase db = new DataBase(this);
+    public static DataBase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = new DataBase(this);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
         labelEsqueciSenha = findViewById(R.id.labelEsqueciSenha);
@@ -45,12 +48,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-    }
-
         //db.addUsuario(new Usuario("admin", "senhaAdmin", "Nome", "Telefone", "email", "endereco/fotos"));
 
         //Toast.makeText(MainActivity.this, "Salvo com Sucesso!", Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d("LOG", "On pause");
+        super.onPause();
     }
 
     public void verificaLogin(View view)
@@ -61,7 +68,12 @@ public class MainActivity extends AppCompatActivity {
         String strLogin = login.getText().toString();
         String strPassword = password.getText().toString();
 
-        Usuario usuario = LogInController.verificaLogIn(db, strLogin, strPassword);
+        AES cripto = new AES();
+        String senhaCripto = cripto.CriptografaMensagem(strPassword);
+
+        Log.d("LOG", "Senha sem cripto: " + strPassword + " Senha criptografada: " + senhaCripto);
+
+        Usuario usuario = LogInController.verificaLogIn(strLogin, senhaCripto);
 
         if(usuario == null)
         {
@@ -72,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             usuarioLogado = usuario;
-            LogInController.preencheListaItems(db, usuarioLogado);
+            ItemsController.preencheListaItems(usuarioLogado);
             chamaMenuPrincipal();
         }
     }

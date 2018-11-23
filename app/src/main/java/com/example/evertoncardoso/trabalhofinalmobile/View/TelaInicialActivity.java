@@ -6,11 +6,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.evertoncardoso.trabalhofinalmobile.Database.DataBase;
 import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 import com.jjoe64.graphview.GraphView;
@@ -24,9 +26,13 @@ public class TelaInicialActivity extends AppCompatActivity {
     Button btnPerfil, btnPesquisar, btnSair, btnSemana, btnMes, btnAno;
     private LineGraphSeries<DataPoint> graficoConta;
 
+    public static DataBase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = MainActivity.db;
+        Log.d("LOG", "On create");
         setContentView(R.layout.activity_tela_inicial);
         btnPerfil = findViewById(R.id.btnPerfil);
         btnPesquisar = findViewById(R.id.btnPesquisar);
@@ -78,6 +84,8 @@ public class TelaInicialActivity extends AppCompatActivity {
                 graficoAno();
             }
         });
+
+        //db.addUsuario(new Usuario("segundoUser", "senhaDoSegundo", "Nome", "Telefone", "email", "endereco/fotos"));
 
 
         graficoSemana();

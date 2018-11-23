@@ -1,4 +1,4 @@
-package com.example.evertoncardoso.trabalhofinalmobile.View;
+package com.example.evertoncardoso.trabalhofinalmobile.Controller;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -6,17 +6,11 @@ import javax.crypto.spec.SecretKeySpec;
 public class AES {
     protected static String chaveSimetrica;
     protected static SecretKey key;
-    public static String mensagem;
     //public static byte[] mensagemEncriptada;
     //public static byte[] mensagemDescriptada;
 
-    public AES(String mensagem){
+    public AES(){
         criarChave();
-        setMensagem(mensagem);
-    }
-
-    private void setMensagem(String mensagem){
-        this.mensagem = mensagem;
     }
 
     private void criarChave(){
@@ -24,12 +18,12 @@ public class AES {
         this.key = new SecretKeySpec(chaveSimetrica.getBytes(), "AES");
     }
 
-    public byte[] CriptografaMensagem(String msg){
+    public String CriptografaMensagem(String msg){
         try{
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.ENCRYPT_MODE, this.key);
-            //byte[] mensagemEncriptada = cipher.doFinal(msg.getBytes());
-            return cipher.doFinal(msg.getBytes());
+            String mensagemEncriptada = new String(cipher.doFinal(msg.getBytes()));
+            return mensagemEncriptada;
         }
         catch(Exception ex){
             ex.printStackTrace();

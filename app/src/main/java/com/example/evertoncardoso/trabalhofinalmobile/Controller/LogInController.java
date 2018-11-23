@@ -3,14 +3,15 @@ package com.example.evertoncardoso.trabalhofinalmobile.Controller;
 import com.example.evertoncardoso.trabalhofinalmobile.Database.DataBase;
 import com.example.evertoncardoso.trabalhofinalmobile.Model.Item;
 import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
+import com.example.evertoncardoso.trabalhofinalmobile.View.MainActivity;
 
 import java.util.List;
 
 public class LogInController {
 
-    public static Usuario verificaLogIn(DataBase db, String login, String senha)
+    public static Usuario verificaLogIn(String login, String senha)
     {
-        List<Usuario> lista = db.listarTodosUsuarios();
+        List<Usuario> lista = MainActivity.db.listarTodosUsuarios();
 
         for(Usuario temp: lista)
         {
@@ -21,14 +22,5 @@ public class LogInController {
         }
 
         return null;
-    }
-
-    public static void preencheListaItems(DataBase db, Usuario usuario)
-    {
-        String NOME_DA_TABELA = db.criaNomeTabelaUsuario(usuario.getId());
-
-        List<Item> items = db.listarTodosItems(NOME_DA_TABELA);
-
-        usuario.setListaDeGastos(items);
     }
 }
