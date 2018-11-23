@@ -149,7 +149,7 @@ public class TelaInicialActivity extends AppCompatActivity {
     }
     public void chamaMovimentaConta()
     {
-//        startActivity(new Intent(this, TelaInicialActivity.class));
+        startActivity(new Intent(this, ContaActivity.class));
     }
     public void chamaPerfil()
     {
