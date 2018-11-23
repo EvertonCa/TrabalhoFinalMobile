@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     EditText login;
     EditText password;
-    Button button;
     TextView labelEsqueciSenha;
 
     public static Usuario usuarioLogado;
@@ -33,14 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         db = new DataBase(this);
         setContentView(R.layout.activity_main);
-        button = findViewById(R.id.button);
         labelEsqueciSenha = findViewById(R.id.labelEsqueciSenha);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chamaMenuPrincipal();
-            }
-        });
+
         labelEsqueciSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
