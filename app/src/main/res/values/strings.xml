@@ -17,4 +17,5 @@
     <string name="dinheiro">Dinheiro</string>
     <string name="email">Email</string>
     <string name="enviar">Enviar</string>
+    <string name="splashlogo">SplashLogo</string>
 </resources>
