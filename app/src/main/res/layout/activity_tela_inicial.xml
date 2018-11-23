@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnSair"
+        android:id="@+id/btnGps"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -48,7 +48,7 @@
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:background="@drawable/custon_button"
-        android:text="@string/sair"
+        android:text="@string/gps"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnPesquisar"
@@ -66,7 +66,7 @@
         android:background="@drawable/custon_button"
         android:text="@string/pesquisar"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/btnSair"
+        app:layout_constraintEnd_toStartOf="@+id/btnGps"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnPerfil"
         app:layout_constraintTop_toTopOf="parent" />
@@ -89,15 +89,15 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:text="@string/tituloGrafico"
-        android:textStyle="bold"
         android:textColor="@android:color/black"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPesquisar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnBolsa" />
 
     <Button
         android:id="@+id/btnSemana"
@@ -143,22 +143,68 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="505dp"
+        android:layout_marginTop="450dp"
         android:text="@string/data"
         app:layout_constraintEnd_toStartOf="@+id/graph"
         app:layout_constraintHorizontal_bias="0.115"
         app:layout_constraintStart_toEndOf="@+id/graph"
-        app:layout_constraintTop_toBottomOf="@+id/btnPesquisar" />
+        app:layout_constraintTop_toTopOf="@+id/graph" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:text="@string/dinheiro"
         app:layout_constraintEnd_toStartOf="@+id/graph"
         app:layout_constraintHorizontal_bias="0.82"
         app:layout_constraintStart_toEndOf="@+id/graph"
+        app:layout_constraintTop_toTopOf="@+id/graph" />
+
+    <Button
+        android:id="@+id/btnBolsa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/custon_button"
+        android:text="@string/bolsaValores"
+        app:layout_constraintEnd_toStartOf="@+id/btnDolar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPerfil" />
+
+    <Button
+        android:id="@+id/btnDolar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/custon_button"
+        android:text="@string/dolar"
+
+        app:layout_constraintEnd_toStartOf="@+id/btnSair"
+        app:layout_constraintStart_toEndOf="@+id/btnBolsa"
+        app:layout_constraintTop_toBottomOf="@+id/btnPesquisar" />
+
+    <Button
+        android:id="@+id/btnSair"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/custon_button"
+
+        android:text="@string/sair"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnDolar"
+        app:layout_constraintTop_toBottomOf="@+id/btnGps" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.evertoncardoso.trabalhofinalmobile.View;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 
 import android.content.Intent;
@@ -8,20 +9,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.util.Vector;
-
 public class TelaInicialActivity extends AppCompatActivity {
     FloatingActionButton btnAdiciona;
-    Button btnPerfil, btnPesquisar, btnSair, btnSemana, btnMes, btnAno;
+    Button btnPerfil, btnPesquisar, btnSair, btnSemana, btnMes, btnAno, btnGps, btnBolsa, btnDolar;
     private LineGraphSeries<DataPoint> graficoConta;
 
     @Override
@@ -35,6 +31,9 @@ public class TelaInicialActivity extends AppCompatActivity {
         btnSemana = findViewById(R.id.btnSemana);
         btnMes = findViewById(R.id.btnMes);
         btnAno = findViewById(R.id.btnAno);
+        btnGps = findViewById(R.id.btnGps);
+        btnBolsa = findViewById(R.id.btnBolsa);
+        btnDolar = findViewById(R.id.btnDolar);
 
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +75,24 @@ public class TelaInicialActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 graficoAno();
+            }
+        });
+        btnGps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                graficoAno();
+            }
+        });
+        btnBolsa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chamaBolsa();
+            }
+        });
+        btnDolar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chamaDolar();
             }
         });
 
@@ -141,6 +158,18 @@ public class TelaInicialActivity extends AppCompatActivity {
     public void chamaPesquisar()
     {
 //        startActivity(new Intent(this, TelaInicialActivity.class));
+    }
+    public void chamaDolar()
+    {
+        Uri uri = Uri.parse("https://dolarhoje.com/");
+        Intent browser = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(browser);
+    }
+    public void chamaBolsa()
+    {
+        Uri uri = Uri.parse("https://www.infomoney.com.br/mercados/acoes-e-indices");
+        Intent browser = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(browser);
     }
 
 
