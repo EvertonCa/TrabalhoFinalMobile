@@ -36,8 +36,6 @@ public class TelaInicialActivity extends AppCompatActivity {
         btnMes = findViewById(R.id.btnMes);
         btnAno = findViewById(R.id.btnAno);
 
-        GraphView graphView = (GraphView)findViewById(R.id.graph);
-
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
