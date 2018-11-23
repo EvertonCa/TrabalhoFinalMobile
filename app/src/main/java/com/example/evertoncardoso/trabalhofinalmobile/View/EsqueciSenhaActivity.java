@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 
-public class esqueciSenhaActivity extends AppCompatActivity {
+public class EsqueciSenhaActivity extends AppCompatActivity {
     EditText edtUser, edtEmail;
     Button btnEnviar;
 

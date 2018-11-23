@@ -89,6 +89,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void chamaEsqueciSenha()
     {
-        startActivity(new Intent(this, esqueciSenhaActivity.class));
+        startActivity(new Intent(this, EsqueciSenhaActivity.class));
     }
 }
