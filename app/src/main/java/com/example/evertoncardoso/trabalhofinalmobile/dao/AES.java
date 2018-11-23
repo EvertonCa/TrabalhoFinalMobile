@@ -21,8 +21,7 @@ public class AES {
         try{
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.ENCRYPT_MODE, this.key);
-            String mensagemEncriptada = new String(cipher.doFinal(msg.getBytes()));
-            return mensagemEncriptada;
+            return cipher.doFinal(msg.getBytes()).toString();
         }
         catch(Exception ex){
             ex.printStackTrace();
