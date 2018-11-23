@@ -122,6 +122,7 @@ public class TelaInicialActivity extends AppCompatActivity {
         }
 
         graficoConta.setColor(Color.GREEN);
+        graficoConta.setThickness(20);
         graphView.addSeries(graficoConta);
     }
 

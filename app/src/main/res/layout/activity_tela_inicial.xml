@@ -26,12 +26,14 @@
         android:id="@+id/btnPerfil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
+        android:background="@drawable/custon_button"
         android:text="@string/perfil"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btnPesquisar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,10 +44,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/custon_button"
         android:text="@string/sair"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnPesquisar"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,10 +60,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
+        android:background="@drawable/custon_button"
         android:text="@string/pesquisar"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/btnSair"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnPerfil"
@@ -85,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/tituloGrafico"
+        android:textStyle="bold"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,9 +101,12 @@
 
     <Button
         android:id="@+id/btnSemana"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/button_periodo"
         android:text="@string/semana"
         app:layout_constraintEnd_toStartOf="@+id/btnMes"
         app:layout_constraintHorizontal_bias="0.5"
@@ -105,10 +115,11 @@
 
     <Button
         android:id="@+id/btnMes"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/mes"
+        android:background="@drawable/button_periodo"
         app:layout_constraintEnd_toStartOf="@+id/btnAno"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnSemana"
@@ -116,13 +127,38 @@
 
     <Button
         android:id="@+id/btnAno"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/button_periodo"
         android:text="@string/ano"
         app:layout_constraintEnd_toStartOf="@+id/btnAdiciona"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnMes"
         app:layout_constraintTop_toBottomOf="@+id/graph" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="505dp"
+        android:text="@string/data"
+        app:layout_constraintEnd_toStartOf="@+id/graph"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toEndOf="@+id/graph"
+        app:layout_constraintTop_toBottomOf="@+id/btnPesquisar" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/dinheiro"
+        app:layout_constraintEnd_toStartOf="@+id/graph"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toEndOf="@+id/graph"
+        app:layout_constraintTop_toBottomOf="@+id/btnPerfil" />
 
 </android.support.constraint.ConstraintLayout>

@@ -13,4 +13,6 @@
     <string name="semana">Semana</string>
     <string name="mes">Mes</string>
     <string name="ano">Ano</string>
+    <string name="data">Data</string>
+    <string name="dinheiro">Dinheiro</string>
 </resources>
