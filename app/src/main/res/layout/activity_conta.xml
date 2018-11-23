@@ -9,10 +9,12 @@
         android:id="@+id/textView1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
-        android:text="@string/escolha_uma_op_o"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="@string/escolha_uma_op_o_adicionar_ou_retirar_valor_na_conta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,75 +34,83 @@
 
     <Button
         android:id="@+id/btnAdicionar"
-        android:layout_width="0dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="32dp"
-        android:text="@string/adicionar_um_valor_na_conta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:text="@string/adicionar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <Button
         android:id="@+id/btnRemover"
-        android:layout_width="0dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/remover_um_valor_na_conta"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="@string/remover"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAdicionar" />
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <EditText
         android:id="@+id/edtValor"
-        android:layout_width="161dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:ems="10"
         android:inputType="numberDecimal"
         android:textSize="14sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/txtAdiciona"
+        app:layout_constraintStart_toEndOf="@+id/txtRemove"
         app:layout_constraintTop_toBottomOf="@+id/btnRemover" />
 
     <TextView
         android:id="@+id/txtRemove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/digite_o_valor_a_ser_retirado"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/valor_a_ser_removido"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRemover" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAdicionar" />
 
     <TextView
         android:id="@+id/txtAdiciona"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/digite_o_valor_a_ser_adicionado"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/valor_a_ser_adicionado"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/edtValor"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRemover" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAdicionar" />
 
     <Button
         android:id="@+id/btnConfirma"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:text="@string/confirma"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +122,11 @@
         android:id="@+id/txtConta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:text="@string/o_valor_atual_na_sua_conta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -123,9 +137,11 @@
         android:id="@+id/txtValor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:text="@string/valor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
@@ -134,23 +150,30 @@
 
     <TextView
         android:id="@+id/txtData"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginRight="125dp"
         android:hint="Selecione uma Data"
         android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRemover" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCategoria" />
 
     <TextView
         android:id="@+id/txtDescricao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:text="@string/descreva_a_transa_o"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -162,7 +185,11 @@
         android:id="@+id/edtDescricao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:ems="10"
         android:inputType="textShortMessage|textLongMessage"
         android:textSize="14sp"
@@ -171,5 +198,87 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDescricao" />
+
+    <Button
+        android:id="@+id/btnCategoria"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:hint="@string/selecione_uma_categoria"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="78dp"
+        android:background="@color/green"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btnConfirma"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/txtData"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnCategoria"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtAlimento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/alimenta_o"
+                tools:layout_editor_absoluteX="41dp"
+                tools:layout_editor_absoluteY="325dp" />
+
+            <TextView
+                android:id="@+id/txtCasa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/casa"
+                tools:layout_editor_absoluteX="44dp"
+                tools:layout_editor_absoluteY="357dp" />
+
+            <TextView
+                android:id="@+id/txtEducacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/educa_o" />
+
+            <TextView
+                android:id="@+id/txtImposto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/imposto" />
+
+            <TextView
+                android:id="@+id/txtLazer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lazer" />
+
+            <TextView
+                android:id="@+id/txtSeguro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/seguro" />
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
