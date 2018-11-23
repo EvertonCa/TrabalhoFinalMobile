@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
+import com.example.evertoncardoso.trabalhofinalmobile.dao.AES;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
     {
         login = findViewById(R.id.campoUsuario);
         password = findViewById(R.id.campoSenha);
-
+        AES cripto = new AES();
         String strLogin = login.getText().toString();
         String strPassword = login.getText().toString();
-
+        String senha = cripto.CriptografaMensagem(strPassword);
         Usuario usuario;
 
         if(CadastrarActivity.usuarioDAO.buscarUsuarioPorLogin(strLogin) != null)
@@ -90,5 +91,33 @@ public class MainActivity extends AppCompatActivity {
     public void chamaEsqueciSenha()
     {
         startActivity(new Intent(this, esqueciSenhaActivity.class));
+    }
+
+    public String criptografaSenha(String senha){
+        int k = 10;
+        int cripto;
+        String resposta = "";
+        String msgOrignal = senha;
+        for(int i =0; i < msgOrignal.length(); i++){
+            char c = msgOrignal.charAt(i);
+            int j = (int) c;
+            cripto = j + k;
+            resposta += (char)cripto;
+        }
+        return resposta;
+    }
+
+    public String descriptografaSenha(String cripto){
+        int k = 10;
+        int original;
+        String msgCriptografada = cripto;
+        String resposta = "";
+        for(int i = 0; i < msgCriptografada.length(); i++){
+            char c = msgCriptografada.charAt(i);
+            int j = (int)c;
+            original = j - k;
+            resposta += (char)original;
+        }
+        return resposta;
     }
 }
