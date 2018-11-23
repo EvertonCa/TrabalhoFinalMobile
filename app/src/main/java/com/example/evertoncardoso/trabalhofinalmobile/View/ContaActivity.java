@@ -10,6 +10,7 @@ import android.view.*;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.app.AlertDialog;
 
@@ -21,9 +22,10 @@ import java.util.Calendar;
 
 public class ContaActivity extends AppCompatActivity {
     EditText Valor, Descricao;
-    TextView Remove, Adiciona, Conta, Balanco, Data, txtDescricao;
-    Button Adicionar, Remover, Confirma;
+    TextView Remove, Adiciona, Conta, Balanco, Data, txtDescricao, Alimentacao, Casa, Educacao, Imposto, Lazer, Seguro;
+    Button Adicionar, Remover, Categoria, Confirma;
     private DatePickerDialog.OnDateSetListener DateSetListener;
+    ScrollView ScrollView;
     private static final String TAG = "Data";
 
 
@@ -36,6 +38,14 @@ public class ContaActivity extends AppCompatActivity {
         Adiciona = findViewById(R.id.txtAdiciona);
         Adicionar = findViewById(R.id.btnAdicionar);
         Remover = findViewById(R.id.btnRemover);
+        Categoria = findViewById(R.id.btnCategoria);
+        ScrollView = findViewById(R.id.scrollview);
+        Alimentacao = findViewById(R.id.txtAlimento);
+        Casa = findViewById(R.id.txtCasa);
+        Educacao = findViewById(R.id.txtEducacao);
+        Imposto = findViewById(R.id.txtImposto);
+        Lazer = findViewById(R.id.txtLazer);
+        Seguro = findViewById(R.id.txtSeguro);
         Confirma = findViewById(R.id.btnConfirma);
         Conta = findViewById(R.id.txtConta);
         Balanco = findViewById(R.id.txtValor);
@@ -56,6 +66,7 @@ public class ContaActivity extends AppCompatActivity {
                 Remove.setVisibility(View.INVISIBLE);
                 Adiciona.setVisibility(View.VISIBLE);
                 Valor.setVisibility(View.VISIBLE);
+                Categoria.setVisibility(View.VISIBLE);
                 Confirma.setVisibility(View.VISIBLE);
                 Data.setVisibility(View.VISIBLE);
                 Descricao.setVisibility(View.VISIBLE);
@@ -74,6 +85,7 @@ public class ContaActivity extends AppCompatActivity {
                 Adiciona.setVisibility(View.INVISIBLE);
                 Remove.setVisibility(View.VISIBLE);
                 Valor.setVisibility(View.VISIBLE);
+                Categoria.setVisibility(View.VISIBLE);
                 Confirma.setVisibility(View.VISIBLE);
                 Data.setVisibility(View.VISIBLE);
                 Descricao.setVisibility(View.VISIBLE);
@@ -105,6 +117,7 @@ public class ContaActivity extends AppCompatActivity {
                         Valor.setVisibility(View.INVISIBLE);
                         Confirma.setVisibility(View.INVISIBLE);
                         Data.setVisibility(View.INVISIBLE);
+                        Categoria.setVisibility(View.INVISIBLE);
                         Descricao.setVisibility(View.INVISIBLE);
                         txtDescricao.setVisibility(View.INVISIBLE);
                         //Balanco.setText(valor no DB);
@@ -127,6 +140,7 @@ public class ContaActivity extends AppCompatActivity {
                         Adiciona.setVisibility(View.INVISIBLE);
                         Valor.setVisibility(View.INVISIBLE);
                         Confirma.setVisibility(View.INVISIBLE);
+                        Categoria.setVisibility(View.INVISIBLE);
                         Data.setVisibility(View.INVISIBLE);
                         Descricao.setVisibility(View.INVISIBLE);
                         txtDescricao.setVisibility(View.INVISIBLE);
@@ -135,6 +149,69 @@ public class ContaActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Categoria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Categoria.setVisibility(View.INVISIBLE);
+                ScrollView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        Alimentacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Categoria.setText("Alimentação");
+                ScrollView.setVisibility(View.INVISIBLE);
+                Categoria.setVisibility(View.VISIBLE);
+            }
+        });
+
+        Casa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Categoria.setText("Casa");
+                ScrollView.setVisibility(View.INVISIBLE);
+                Categoria.setVisibility(View.VISIBLE);
+            }
+        });
+
+        Educacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Categoria.setText("Educação");
+                ScrollView.setVisibility(View.INVISIBLE);
+                Categoria.setVisibility(View.VISIBLE);
+            }
+        });
+
+        Imposto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Categoria.setText("Imposto");
+                ScrollView.setVisibility(View.INVISIBLE);
+                Categoria.setVisibility(View.VISIBLE);
+            }
+        });
+
+        Lazer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Categoria.setText("Lazer");
+                ScrollView.setVisibility(View.INVISIBLE);
+                Categoria.setVisibility(View.VISIBLE);
+            }
+        });
+
+        Seguro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Categoria.setText("Seguro");
+                ScrollView.setVisibility(View.INVISIBLE);
+                Categoria.setVisibility(View.VISIBLE);
+            }
+        });
+
 
         Data.setOnClickListener(new View.OnClickListener() {
             @Override

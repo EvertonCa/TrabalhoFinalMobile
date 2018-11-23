@@ -8,10 +8,6 @@
     <string name="esqueci_minha_senha">Esqueci Minha Senha</string>
     <string name="escolha_uma_op_o">Escolha uma Opção:</string>
     <string name="conta_corrente">Conta Corrente</string>
-    <string name="adicionar_um_valor_na_conta">Adicionar um valor na conta</string>
-    <string name="remover_um_valor_na_conta">Remover um valor na conta</string>
-    <string name="digite_o_valor_a_ser_retirado">Digite o valor a ser Retirado:</string>
-    <string name="digite_o_valor_a_ser_adicionado">Digite o valor a ser Adicionado:</string>
     <string name="consultar_conta_corrente">Consultar conta corrente</string>
     <string name="valor">Valor</string>
     <string name="o_valor_atual_na_sua_conta">O Valor atual na sua conta é:</string>
@@ -32,4 +28,16 @@
     <string name="nova_senha">Nova Senha:</string>
     <string name="senha_atual">Senha Atual:</string>
     <string name="cancelar">Cancelar</string>
+    <string name="remover">Remover</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="selecione_uma_categoria">Selecione uma Categoria</string>
+    <string name="escolha_uma_op_o_adicionar_ou_retirar_valor_na_conta">Escolha uma opção: Adicionar ou Retirar valor na Conta?</string>
+    <string name="alimenta_o">Alimentação</string>
+    <string name="casa">Casa</string>
+    <string name="educa_o">Educação</string>
+    <string name="imposto">Imposto</string>
+    <string name="lazer">Lazer</string>
+    <string name="seguro">Seguro</string>
+    <string name="valor_a_ser_adicionado">Valor a ser Adicionado:</string>
+    <string name="valor_a_ser_removido">Valor a ser Removido:</string>
 </resources>
