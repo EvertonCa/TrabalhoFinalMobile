@@ -6,4 +6,11 @@
     <string name="sign_in">Sign In</string>
     <string name="log_in">Log In</string>
     <string name="esqueci_minha_senha">Esqueci Minha Senha</string>
+    <string name="perfil">Perfil</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="sair">Sair</string>
+    <string name="tituloGrafico">Resumo da conta</string>
+    <string name="semana">Semana</string>
+    <string name="mes">Mes</string>
+    <string name="ano">Ano</string>
 </resources>
