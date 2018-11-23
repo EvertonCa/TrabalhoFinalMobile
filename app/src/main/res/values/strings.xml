@@ -20,4 +20,18 @@
     <string name="dolar">Dolar</string>
     <string name="bolsaValores">Bolsa de valores</string>
     <string name="gps">GPS</string>
+    <string name="escolha_uma_op_o">Escolha uma Opção:</string>
+    <string name="conta_corrente">Conta Corrente</string>
+    <string name="adicionar_um_valor_na_conta">Adicionar um valor na conta</string>
+    <string name="remover_um_valor_na_conta">Remover um valor na conta</string>
+    <string name="digite_o_valor_a_ser_retirado">Digite o valor a ser Retirado:</string>
+    <string name="digite_o_valor_a_ser_adicionado">Digite o valor a ser Adicionado:</string>
+    <string name="consultar_conta_corrente">Consultar conta corrente</string>
+    <string name="valor">Valor</string>
+    <string name="o_valor_atual_na_sua_conta">O Valor atual na sua conta é:</string>
+    <string name="transa_es">Transações</string>
+    <string name="confirma">Confirma</string>
+    <string name="selecione_uma_data">Selecione uma data</string>
+    <string name="name">Name</string>
+    <string name="descreva_a_transa_o">Descreva a transação:</string>
 </resources>
