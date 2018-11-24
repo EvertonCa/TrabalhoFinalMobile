@@ -22,8 +22,10 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
+import java.text.SimpleDateFormat;
 
 public class TelaInicialActivity extends AppCompatActivity {
     FloatingActionButton btnAdiciona;
@@ -121,19 +123,42 @@ public class TelaInicialActivity extends AppCompatActivity {
         List<Item> lista = ItemsController.listarItens();
 
         // vetor com todos os valores da conta no historico
-        double vetPontos;
+        double vetPontos[] = new double[lista.size()];
         // vetor com a data de todas as mudanças da conta
-        double vetDatas;
-
-        for (int i = 0; i < lista.size(); i++)
+        double vetDatas[] = new double[lista.size()];
+        if(lista.size() == 0)
         {
+            return;
+        }
+        if(lista.get(0).getTipo().equals("Gasto"))
+        {
+            vetPontos[0] = -lista.get(0).getValor();
+        }
+        else
+        {
+            vetPontos[0] = -lista.get(0).getValor();
+        }
+        vetDatas[0] = lista.get(0).getDia();
+
+
+        for (int i = 1; i < lista.size(); i++)
+        {
+            if(lista.get(i).getTipo().equals("gasto"))
+            {
+                vetPontos[i] = vetPontos[i-1]-lista.get(0).getValor();
+            }
+            else
+            {
+                vetPontos[i] = vetPontos[i-1]+lista.get(0).getValor();
+            }
+            vetDatas[i] = lista.get(i).getDia();
 //            if(lista.get(i).getDia())
 //            lista.get(i).getMes();
 //            lista.get(i).getAno();
         }
 
 
-//        fazGrafico(vetPontos,vetDatas);
+        fazGrafico(vetPontos,vetDatas);
     }
     public void graficoMes()
     {
@@ -157,7 +182,6 @@ public class TelaInicialActivity extends AppCompatActivity {
         graphView.removeAllSeries();
 
         graficoConta = new LineGraphSeries<>();
-
 
         int qtdPontos = vetPontos.length; // quantas transacoes foram feitas no periodo
 
