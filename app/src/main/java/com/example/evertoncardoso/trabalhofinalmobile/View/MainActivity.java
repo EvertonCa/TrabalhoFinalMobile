@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void teste(View view)
+    public void chamaPesquisa(View view)
     {
         startActivity(new Intent(this, PesquisarActivity.class));
     }

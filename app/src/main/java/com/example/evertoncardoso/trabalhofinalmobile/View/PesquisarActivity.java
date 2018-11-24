@@ -1,5 +1,6 @@
 package com.example.evertoncardoso.trabalhofinalmobile.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.evertoncardoso.trabalhofinalmobile.Controller.ItemsController;
@@ -22,10 +24,8 @@ public class PesquisarActivity extends AppCompatActivity {
 
     CalendarView calendarViewInicial, calendarViewFinal;
     int diaInicial, diaFinal, mesInicial, mesFinal, anoInicial, anoFinal;
-    ListView listViewItens;
-
-    ArrayAdapter<String> adapter;
-    ArrayList<String> arrayList;
+    public static String data;
+    public static List<Item> listaPeneirada;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,24 +52,12 @@ public class PesquisarActivity extends AppCompatActivity {
                 anoFinal = year;
             }
         });
-
-        listViewItens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String conteudo = (String) listViewItens.getItemAtPosition(position);
-
-                //Toast.makeText(MainActivity.this, conteudo, Toast.LENGTH_LONG).show();
-                String index = conteudo.substring(0, conteudo.indexOf("."));
-
-                Item item = ItemsController.retornaItem(Integer.parseInt(index));
-            }
-        });
     }
 
     public void pesquisarItens(View view)
     {
         List<Item> listaCompleta = ItemsController.listarItens();
-        List<Item> listaPeneirada = new ArrayList<Item>();
+        listaPeneirada = new ArrayList<Item>();
 
         for(Item i: listaCompleta)
         {
@@ -84,27 +72,10 @@ public class PesquisarActivity extends AppCompatActivity {
                 }
             }
         }
-        listarItens(listaPeneirada);
-        trocaViewParaResultados();
-    }
 
-    public void trocaViewParaResultados()
-    {
-        setContentView(R.layout.activity_exibir_resultados);
-    }
+        data = diaInicial + "/" + mesInicial + "/" + anoInicial + " até " + diaFinal
+                + "/" + mesFinal + "/" + anoFinal;
 
-    public void listarItens(List<Item> lista)
-    {
-        arrayList = new ArrayList<String>();
-
-        adapter = new ArrayAdapter<String>(PesquisarActivity.this, android.R.layout.simple_list_item_1, arrayList);
-
-        listViewItens.setAdapter(adapter);
-
-        for(Item i: lista)
-        {
-            arrayList.add(i.getId() +  ". " + i.getDescricao() + " - " + i.getTipo() + " - " + i.getValor());
-            adapter.notifyDataSetChanged();
-        }
+        startActivity(new Intent(this, ResultadosActivity.class));
     }
 }

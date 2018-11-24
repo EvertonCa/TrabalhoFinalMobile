@@ -22,4 +22,9 @@
     <string name="data_inicial">Data inicial</string>
     <string name="data_final">Data Final</string>
     <string name="ir">IR</string>
+    <string name="placeholder">PlaceHolder</string>
+    <string name="gps">GPS</string>
+    <string name="bolsaValores">Bolsa de Valores</string>
+    <string name="dolar">Dolar</string>
+    <string name="resultados_do_intervalo">Resultados do Intervalo:</string>
 </resources>

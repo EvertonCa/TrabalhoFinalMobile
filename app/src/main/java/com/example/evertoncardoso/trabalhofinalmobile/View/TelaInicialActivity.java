@@ -51,7 +51,7 @@ public class TelaInicialActivity extends AppCompatActivity {
         btnPesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamaPesquisar();
+                chamaPesquisa();
             }
         });
         btnSair.setOnClickListener(new View.OnClickListener() {
@@ -146,9 +146,10 @@ public class TelaInicialActivity extends AppCompatActivity {
     {
 //        startActivity(new Intent(this, TelaInicialActivity.class));
     }
-    public void chamaPesquisar()
+
+    public void chamaPesquisa()
     {
-//        startActivity(new Intent(this, TelaInicialActivity.class));
+        startActivity(new Intent(this, PesquisarActivity.class));
     }
 
 
