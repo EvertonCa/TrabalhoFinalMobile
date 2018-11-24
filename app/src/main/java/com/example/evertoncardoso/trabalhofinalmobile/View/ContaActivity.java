@@ -6,9 +6,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.location.Address;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,15 +17,11 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.app.AlertDialog;
+import android.widget.Toast;
 
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.ItemsController;
+import com.example.evertoncardoso.trabalhofinalmobile.Model.Item;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 
 import java.util.Calendar;
@@ -36,13 +29,9 @@ import java.util.Calendar;
 
 public class ContaActivity extends AppCompatActivity {
     EditText Valor, Descricao;
-    TextView Remove, Adiciona, Conta, Balanco, Data, txtDescricao, Alimentacao, Casa, Educacao, Imposto, Lazer, Seguro;
+    TextView Remove, Adiciona, Data, txtDescricao, Alimentacao, Casa, Educacao, Imposto, Lazer, Seguro;
     Button Adicionar, Remover, Categoria, Confirma;
-    Location location;
-    LocationManager locationManager;
-    GoogleMap googleMap;
-    MapView mapa;
-    double latitude, longitude;
+    int dia, mes, ano;
 
 
     private DatePickerDialog.OnDateSetListener DateSetListener;
@@ -68,34 +57,9 @@ public class ContaActivity extends AppCompatActivity {
         Lazer = findViewById(R.id.txtLazer);
         Seguro = findViewById(R.id.txtSeguro);
         Confirma = findViewById(R.id.btnConfirma);
-        Conta = findViewById(R.id.txtConta);
-        Balanco = findViewById(R.id.txtValor);
         Data = findViewById(R.id.txtData);
         txtDescricao = findViewById(R.id.txtDescricao);
         Descricao = findViewById(R.id.edtDescricao);
-        mapa = findViewById(R.id.mapa);
-        //Balanco.setText(valor no DB);
-
-        if(ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED){
-            // se nao tem permicao para acessar o GPS
-        }
-        else{
-            locationManager = (LocationManager)
-                    getSystemService(Context.LOCATION_SERVICE);
-            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        }
-        if(location != null) {
-            longitude = location.getLongitude();
-            latitude = location.getLatitude();
-        }
-
-        Remover.setText(Double.toString(latitude));
-        Adicionar.setText(Double.toString(longitude));
-//        System.console().printf(longitude + " " + latitude);
-
-
 
 
         Adicionar.setOnClickListener(new View.OnClickListener(){
@@ -152,6 +116,12 @@ public class ContaActivity extends AppCompatActivity {
                     }
                     else{
                         //manda pro banco as infos
+
+                        Item item = new Item(Descricao.getText().toString(), Double.parseDouble(Valor.getText().toString()),
+                                "Gasto", Categoria.getText().toString(), dia, mes, ano);
+
+                        ItemsController.criaItem(item);
+
                         Valor.setText("");
                         Data.setText("");
                         Descricao.setText("");
@@ -162,7 +132,8 @@ public class ContaActivity extends AppCompatActivity {
                         Categoria.setVisibility(View.INVISIBLE);
                         Descricao.setVisibility(View.INVISIBLE);
                         txtDescricao.setVisibility(View.INVISIBLE);
-                        //Balanco.setText(valor no DB);
+
+                        Toast.makeText(ContaActivity.this, "Salvo com Sucesso!", Toast.LENGTH_LONG).show();
                     }
                 }
                 else {
@@ -176,6 +147,12 @@ public class ContaActivity extends AppCompatActivity {
                     }
                     else{
                         //manda pro banco as infos
+
+                        Item item = new Item(Descricao.getText().toString(), Double.parseDouble(Valor.getText().toString()),
+                                "Renda", Categoria.getText().toString(), dia, mes, ano);
+
+                        ItemsController.criaItem(item);
+
                         Valor.setText("");
                         Data.setText("");
                         Descricao.setText("");
@@ -186,7 +163,8 @@ public class ContaActivity extends AppCompatActivity {
                         Data.setVisibility(View.INVISIBLE);
                         Descricao.setVisibility(View.INVISIBLE);
                         txtDescricao.setVisibility(View.INVISIBLE);
-                        //Balanco.setText(valor no DB);
+
+                        Toast.makeText(ContaActivity.this, "Salvo com Sucesso!", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -278,6 +256,9 @@ public class ContaActivity extends AppCompatActivity {
                 month = month + 1;
                 Log.d(TAG, "onDateSet: mm/dd/yyyy " + dayOfMonth + "/" + month + "/" + year);
 
+                dia = dayOfMonth;
+                mes = month;
+                ano = year;
                 String date = dayOfMonth + "/" + month + "/" + year;
                 Data.setText(date);
             }
