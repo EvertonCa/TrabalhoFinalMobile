@@ -1,21 +1,57 @@
 package com.example.evertoncardoso.trabalhofinalmobile.Model;
 
+import java.util.List;
+
 public class Usuario {
 
-    public static String[] colunas = new String[] { "_id", "login", "password", "nome", "telefone" };
+    private String login, password, nome, telefone, email;
 
-    private String login, password, nome, telefone;
+    private String enderecoFotos = "";
 
-    private Long _id;
+    private int id;
+
+    private List<Item> listaDeGastos;
 
     public Usuario(){}
 
-    public Usuario(String login, String password, String nome, String telefone)
+    public Usuario(String login, String password, String nome, String telefone, String email)
     {
         this.login = login;
         this.password = password;
         this.nome = nome;
         this.telefone = telefone;
+        this.email = email;
+    }
+
+    public Usuario(String login, String password, String nome, String telefone, String email,  String enderecoFotos)
+    {
+        this.login = login;
+        this.password = password;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.enderecoFotos = enderecoFotos;
+    }
+
+    public Usuario(int id, String login, String password, String nome, String telefone, String email)
+    {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+    }
+
+    public Usuario(int id, String login, String password, String nome, String telefone, String email, String enderecoFotos)
+    {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.enderecoFotos = enderecoFotos;
     }
 
     public String getLogin() {
@@ -50,11 +86,35 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-    public Long get_id() {
-        return _id;
+    public String getEmail() {
+        return email;
     }
 
-    public void set_id(Long _id) {
-        this._id = _id;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Item> getListaDeGastos() {
+        return listaDeGastos;
+    }
+
+    public void setListaDeGastos(List<Item> listaDeGastos) {
+        this.listaDeGastos = listaDeGastos;
+    }
+
+    public String getEnderecoFotos() {
+        return enderecoFotos;
+    }
+
+    public void setEnderecoFotos(String enderecoFotos) {
+        this.enderecoFotos = enderecoFotos;
     }
 }

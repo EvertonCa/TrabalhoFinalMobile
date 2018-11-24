@@ -7,22 +7,35 @@ import android.support.design.widget.FloatingActionButton;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.ItemsController;
+import com.example.evertoncardoso.trabalhofinalmobile.Database.DataBase;
+import com.example.evertoncardoso.trabalhofinalmobile.Model.Item;
+import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.util.Vector;
 
 public class TelaInicialActivity extends AppCompatActivity {
     FloatingActionButton btnAdiciona;
     Button btnPerfil, btnPesquisar, btnSair, btnSemana, btnMes, btnAno, btnGps, btnBolsa, btnDolar;
     private LineGraphSeries<DataPoint> graficoConta;
 
+    public static DataBase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = MainActivity.db;
+        Log.d("LOG", "On create");
         setContentView(R.layout.activity_tela_inicial);
         btnPerfil = findViewById(R.id.btnPerfil);
         btnPesquisar = findViewById(R.id.btnPesquisar);
@@ -44,7 +57,7 @@ public class TelaInicialActivity extends AppCompatActivity {
         btnPesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamaPesquisar();
+                chamaPesquisa();
             }
         });
         btnSair.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +108,8 @@ public class TelaInicialActivity extends AppCompatActivity {
                 chamaDolar();
             }
         });
+
+        //ItemsController.criaItem(new Item("Descricao 2", 60.44, "tipo 2", "categoria", 24, 10, 2018));
 
 
         graficoSemana();
@@ -155,9 +170,10 @@ public class TelaInicialActivity extends AppCompatActivity {
     {
 //        startActivity(new Intent(this, TelaInicialActivity.class));
     }
-    public void chamaPesquisar()
+
+    public void chamaPesquisa()
     {
-//        startActivity(new Intent(this, TelaInicialActivity.class));
+        startActivity(new Intent(this, PesquisarActivity.class));
     }
     public void chamaDolar()
     {

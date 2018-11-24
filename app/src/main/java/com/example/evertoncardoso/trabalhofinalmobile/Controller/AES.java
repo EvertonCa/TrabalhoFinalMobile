@@ -6,11 +6,12 @@ import javax.crypto.spec.SecretKeySpec;
 public class AES {
     protected static String chaveSimetrica;
     protected static SecretKey key;
+    //public static byte[] mensagemEncriptada;
+    //public static byte[] mensagemDescriptada;
 
     public AES(){
         criarChave();
     }
-
 
     private void criarChave(){
         this.chaveSimetrica = "24";
@@ -44,5 +45,37 @@ public class AES {
             return null;
         }
 
+    }
+
+    public static String criptografaSenha(String senha)
+    {
+        int k=10;
+        int cripto;
+        String resposta = "";
+        String msgOriginal = senha;
+        for (int i=0; i < msgOriginal.length(); i++)
+        {
+            char c = msgOriginal.charAt(i);
+            int j = (int) c;
+            cripto = j + k;
+            resposta += (char)cripto;
+        }
+        return resposta;
+    }
+
+    public static String descriptografaSenha(String senha)
+    {
+        int k=10;
+        int cripto;
+        String resposta = "";
+        String msgOriginal = senha;
+        for (int i=0; i < msgOriginal.length(); i++)
+        {
+            char c = msgOriginal.charAt(i);
+            int j = (int) c;
+            cripto = j - k;
+            resposta += (char)cripto;
+        }
+        return resposta;
     }
 }

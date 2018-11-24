@@ -20,6 +20,13 @@
     <string name="dolar">Dolar</string>
     <string name="bolsaValores">Bolsa de valores</string>
     <string name="gps">GPS</string>
+    <string name="splashlogo">SplashLogo</string>
+    <string name="qual_o_intervalo_de_pesquisa">Qual o intervalo de pesquisa?</string>
+    <string name="data_inicial">Data inicial</string>
+    <string name="data_final">Data Final</string>
+    <string name="ir">IR</string>
+    <string name="placeholder">PlaceHolder</string>
+    <string name="resultados_do_intervalo">Resultados do Intervalo:</string>
     <string name="escolha_uma_op_o">Escolha uma Opção:</string>
     <string name="conta_corrente">Conta Corrente</string>
     <string name="consultar_conta_corrente">Consultar conta corrente</string>
@@ -53,4 +60,9 @@
     <string name="seguro">Seguro</string>
     <string name="valor_a_ser_adicionado">Valor a ser Adicionado:</string>
     <string name="valor_a_ser_removido">Valor a ser Removido:</string>
+    <string name="senha1">Senha:</string>
+    <string name="confirma_senha">Confirma Senha:</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="usuario1">Usuario:</string>
+    <string name="nome1">Nome:</string>
 </resources>
