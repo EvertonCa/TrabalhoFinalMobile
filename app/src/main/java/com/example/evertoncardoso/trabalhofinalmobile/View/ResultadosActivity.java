@@ -62,7 +62,7 @@ public class ResultadosActivity extends AppCompatActivity {
 
         for(Item i: lista)
         {
-            arrayList.add(i.getId() +  ". " + i.getDescricao() + " - " + i.getTipo() + " - " + i.getValor());
+            arrayList.add(i.getId() +  ". " + i.getDescricao() + " - " + i.getTipo() + " - R$" + i.getValor());
             adapter.notifyDataSetChanged();
         }
     }

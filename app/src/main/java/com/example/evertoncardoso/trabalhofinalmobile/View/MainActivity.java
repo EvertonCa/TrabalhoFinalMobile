@@ -82,11 +82,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void chamaPesquisa(View view)
-    {
-        startActivity(new Intent(this, PesquisarActivity.class));
-    }
-
     public void chamaMenuPrincipal()
     {
         startActivity(new Intent(this, TelaInicialActivity.class));

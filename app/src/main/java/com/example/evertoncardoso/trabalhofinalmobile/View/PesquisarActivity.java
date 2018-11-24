@@ -39,7 +39,7 @@ public class PesquisarActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 diaInicial = dayOfMonth;
-                mesInicial = month;
+                mesInicial = month+1;
                 anoInicial = year;
             }
         });
@@ -48,7 +48,7 @@ public class PesquisarActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 diaFinal = dayOfMonth;
-                mesFinal = month;
+                mesFinal = month+1;
                 anoFinal = year;
             }
         });
