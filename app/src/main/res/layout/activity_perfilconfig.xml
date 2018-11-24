@@ -102,6 +102,7 @@
         android:layout_marginTop="115dp"
         android:text="@string/modificar_senha"
         android:visibility="visible"
+        android:background="@drawable/custon_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,15 +110,17 @@
 
     <Button
         android:id="@+id/btnCancela"
+        app:layout_constraintTop_toBottomOf="@+id/txtNome"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/custon_button"
         android:layout_marginTop="115dp"
         android:text="@string/cancelar"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNome" />
+         />
 
     <EditText
         android:id="@+id/edtSenha"
@@ -179,6 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="122dp"
         android:text="@string/salvar"
+        android:background="@drawable/custon_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

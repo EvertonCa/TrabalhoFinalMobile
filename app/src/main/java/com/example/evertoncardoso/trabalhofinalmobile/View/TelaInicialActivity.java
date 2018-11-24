@@ -28,7 +28,7 @@ import java.util.Vector;
 
 public class TelaInicialActivity extends AppCompatActivity {
     FloatingActionButton btnAdiciona;
-    Button btnPerfil, btnPesquisar, btnSair, btnSemana, btnMes, btnAno, btnGps, btnBolsa, btnDolar;
+    Button btnPerfil, btnPesquisar, btnSair, btnSemana, btnMes, btnAno, btnBolsa, btnDolar;
     private LineGraphSeries<DataPoint> graficoConta;
 
     public static DataBase db;
@@ -46,7 +46,6 @@ public class TelaInicialActivity extends AppCompatActivity {
         btnSemana = findViewById(R.id.btnSemana);
         btnMes = findViewById(R.id.btnMes);
         btnAno = findViewById(R.id.btnAno);
-        btnGps = findViewById(R.id.btnGps);
         btnBolsa = findViewById(R.id.btnBolsa);
         btnDolar = findViewById(R.id.btnDolar);
 
@@ -90,12 +89,6 @@ public class TelaInicialActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 graficoAno();
-            }
-        });
-        btnGps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                graficoAno();
             }
         });
         btnBolsa.setOnClickListener(new View.OnClickListener() {
@@ -146,21 +139,20 @@ public class TelaInicialActivity extends AppCompatActivity {
         }
         vetDatas[0] = lista.get(0).getDia()*1.0;
 
-
         for (int i = 1; i < lista.size(); i++)
         {
             if(lista.get(i).getTipo().equals("Gasto"))
             {
-                vetPontos[i] = vetPontos[i-1]-lista.get(0).getValor();
+                vetPontos[i] = vetPontos[i-1]-lista.get(i).getValor();
             }
             else
             {
-                vetPontos[i] = vetPontos[i-1]+lista.get(0).getValor();
+                vetPontos[i] = vetPontos[i-1]+lista.get(i).getValor();
             }
             vetDatas[i] = lista.get(i).getDia()*1.0;
         }
 
-
+        int temp = vetPontos.length;
         fazGrafico(vetPontos,vetDatas);
     }
     public void graficoMes()
@@ -188,14 +180,16 @@ public class TelaInicialActivity extends AppCompatActivity {
 
         int qtdPontos = vetPontos.length; // quantas transacoes foram feitas no periodo
 
-
-        for(int i = 0; i < qtdPontos; i++){
-            graficoConta.appendData(new DataPoint(vetDatas[i], vetPontos[i]),true,60);
+        int i;
+        for(i = 0; i < qtdPontos; i++){
+            graficoConta.appendData(new DataPoint(vetDatas[i], vetPontos[i]),true,600);
         }
 
         graficoConta.setColor(Color.GREEN);
         graficoConta.setThickness(20);
+        graficoConta.setDataPointsRadius(30);
         graphView.addSeries(graficoConta);
+        graphView.computeScroll();
     }
 
     public void chamaLogin()

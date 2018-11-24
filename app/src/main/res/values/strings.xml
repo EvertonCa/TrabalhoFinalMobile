@@ -24,7 +24,7 @@
     <string name="ir">IR</string>
     <string name="placeholder">PlaceHolder</string>
     <string name="gps">GPS</string>
-    <string name="bolsaValores">Bolsa de Valores</string>
+    <string name="bolsaValores">Bolsa</string>
     <string name="dolar">Dolar</string>
     <string name="resultados_do_intervalo">Resultados do Intervalo:</string>
     <string name="escolha_uma_op_o">Escolha uma Opção:</string>
@@ -48,8 +48,8 @@
     <string name="nova_senha">Nova Senha:</string>
     <string name="senha_atual">Senha Atual:</string>
     <string name="cancelar">Cancelar</string>
-    <string name="remover">Remover</string>
-    <string name="adicionar">Adicionar</string>
+    <string name="remover">Gasto</string>
+    <string name="adicionar">Renda</string>
     <string name="selecione_uma_categoria">Selecione uma Categoria</string>
     <string name="escolha_uma_op_o_adicionar_ou_retirar_valor_na_conta">Escolha uma opção: Adicionar ou Retirar valor na Conta?</string>
     <string name="alimenta_o">Alimentação</string>
