@@ -22,6 +22,8 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Vector;
 
 public class TelaInicialActivity extends AppCompatActivity {
@@ -115,10 +117,49 @@ public class TelaInicialActivity extends AppCompatActivity {
         graficoSemana();
     }
 
+    @Override
+    protected void onStart() {
+        graficoSemana();
+        super.onStart();
+    }
+
     public void graficoSemana()
     {
-        double vetPontos[] = { 9, 7, 5, 4, 5 }; // vetor com todos os valores da conta no historico
-        double vetDatas[] = { 1, 2, 3, 4, 5 }; // vetor com a data de todas as mudanças da conta
+        List<Item> lista = ItemsController.listarItens();
+
+        // vetor com todos os valores da conta no historico
+        double vetPontos[] = new double[lista.size()];
+        // vetor com a data de todas as mudanças da conta
+        double vetDatas[] = new double[lista.size()];
+        if(lista.size() == 0)
+        {
+            return;
+        }
+        Collections.sort(lista, new CustomComparator());
+        if(lista.get(0).getTipo().equals("Gasto"))
+        {
+            vetPontos[0] = -lista.get(0).getValor();
+        }
+        else
+        {
+            vetPontos[0] = lista.get(0).getValor();
+        }
+        vetDatas[0] = lista.get(0).getDia()*1.0;
+
+
+        for (int i = 1; i < lista.size(); i++)
+        {
+            if(lista.get(i).getTipo().equals("Gasto"))
+            {
+                vetPontos[i] = vetPontos[i-1]-lista.get(0).getValor();
+            }
+            else
+            {
+                vetPontos[i] = vetPontos[i-1]+lista.get(0).getValor();
+            }
+            vetDatas[i] = lista.get(i).getDia()*1.0;
+        }
+
 
         fazGrafico(vetPontos,vetDatas);
     }
@@ -144,7 +185,6 @@ public class TelaInicialActivity extends AppCompatActivity {
         graphView.removeAllSeries();
 
         graficoConta = new LineGraphSeries<>();
-
 
         int qtdPontos = vetPontos.length; // quantas transacoes foram feitas no periodo
 
