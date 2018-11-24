@@ -23,11 +23,13 @@ import android.widget.TextView;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 
 
+
 public class PerfilConfigActivity extends AppCompatActivity {
     private TextView Usuario, Nome,txtSenhaAntiga, txtSenhaNova;
     private EditText Telefone, Email, SenhaAntiga, SenhaNova;
     private Button Salva, AlteraSenha, Cancela;
-    private ImageButton Imagem;
+    private ImageButton Imagem, Icone;
+    private String Caminho;
     private final int GALERIA_IMAGENS = 1;
     private final int PERMISSAO_REQUEST = 2;
 
@@ -47,6 +49,7 @@ public class PerfilConfigActivity extends AppCompatActivity {
         Salva = findViewById(R.id.btnConfirm);
         AlteraSenha = findViewById(R.id.btnSenha);
         Cancela = findViewById(R.id.btnCancela);
+        Icone = findViewById(R.id.imgbtnCamera);
         Imagem = findViewById(R.id.imgUsuario);
         /*
         Imagem.setImage(DB);
@@ -158,7 +161,6 @@ public class PerfilConfigActivity extends AppCompatActivity {
                 startActivityForResult(intent, GALERIA_IMAGENS);
             }
         });
-
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -172,6 +174,7 @@ public class PerfilConfigActivity extends AppCompatActivity {
             String picturePath = c.getString(columnIndex);
             c.close();
             Bitmap imagemGaleria = (BitmapFactory.decodeFile(picturePath));
+            Caminho = picturePath;
             Imagem.setImageBitmap(imagemGaleria);
         }
     }
