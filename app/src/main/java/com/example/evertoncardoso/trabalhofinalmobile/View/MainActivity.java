@@ -91,8 +91,14 @@ public class MainActivity extends AppCompatActivity {
     {
         startActivity(new Intent(this, TelaInicialActivity.class));
     }
+
     public void chamaEsqueciSenha()
     {
         startActivity(new Intent(this, esqueciSenhaActivity.class));
+    }
+
+    public void chamaCriaUser(View view)
+    {
+        startActivity(new Intent(this, CadastroActivity.class));
     }
 }
