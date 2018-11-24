@@ -28,6 +28,7 @@
         <activity android:name=".View.TelaInicialActivity"/>
         <activity android:name=".View.esqueciSenhaActivity"/>
         <activity android:name=".View.PesquisarActivity"/>
+        <activity android:name=".View.ResultadosActivity"/>
     </application>
 
 </manifest>

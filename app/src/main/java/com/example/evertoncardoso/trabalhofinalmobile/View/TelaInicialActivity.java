@@ -12,7 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.ItemsController;
 import com.example.evertoncardoso.trabalhofinalmobile.Database.DataBase;
+import com.example.evertoncardoso.trabalhofinalmobile.Model.Item;
 import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 import com.jjoe64.graphview.GraphView;
@@ -51,7 +53,7 @@ public class TelaInicialActivity extends AppCompatActivity {
         btnPesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamaPesquisar();
+                chamaPesquisa();
             }
         });
         btnSair.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +87,7 @@ public class TelaInicialActivity extends AppCompatActivity {
             }
         });
 
-        //db.addUsuario(new Usuario("segundoUser", "senhaDoSegundo", "Nome", "Telefone", "email", "endereco/fotos"));
+        //ItemsController.criaItem(new Item("Descricao 2", 60.44, "tipo 2", "categoria", 24, 10, 2018));
 
 
         graficoSemana();
@@ -146,9 +148,10 @@ public class TelaInicialActivity extends AppCompatActivity {
     {
 //        startActivity(new Intent(this, TelaInicialActivity.class));
     }
-    public void chamaPesquisar()
+
+    public void chamaPesquisa()
     {
-//        startActivity(new Intent(this, TelaInicialActivity.class));
+        startActivity(new Intent(this, PesquisarActivity.class));
     }
 
 

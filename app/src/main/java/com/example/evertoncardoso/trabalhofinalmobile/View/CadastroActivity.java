@@ -17,15 +17,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.AES;
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.UsersController;
+import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 
 public class CadastroActivity extends AppCompatActivity {
-    private EditText Usuario, Nome, Telefone, Email, Senha, SenhaConfirm;
-    private Button Cadastra;
-    private ImageButton Imagem;
-    private String Caminho;
+    private EditText campoUsuario, campoNome, campoTelefone, campoEmail, campoSenha, campoSenhaConfim;
+    private Button btnCadastra;
+    private ImageButton btnImagem;
+    private String strCaminho = "";
     private final int GALERIA_IMAGENS = 1;
     private final int PERMISSAO_REQUEST = 2;
 
@@ -33,14 +36,14 @@ public class CadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-        Usuario = findViewById(R.id.edtUsuario);
-        Nome = findViewById(R.id.edtNome);
-        Telefone = findViewById(R.id.edtTelefone);
-        Email = findViewById(R.id.edtEmail);
-        Senha = findViewById(R.id.edtSenha);
-        SenhaConfirm = findViewById(R.id.edtSenhaConfirm);
-        Cadastra = findViewById(R.id.btnCadastra);
-        Imagem = findViewById(R.id.imgUsuario);
+        campoUsuario = findViewById(R.id.edtUsuario);
+        campoNome = findViewById(R.id.edtNome);
+        campoTelefone = findViewById(R.id.edtTelefone);
+        campoEmail = findViewById(R.id.edtEmail);
+        campoSenha = findViewById(R.id.edtSenha);
+        campoSenhaConfim = findViewById(R.id.edtSenhaConfirm);
+        btnCadastra = findViewById(R.id.btnCadastra);
+        btnImagem = findViewById(R.id.imgUsuario);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED){
@@ -53,11 +56,11 @@ public class CadastroActivity extends AppCompatActivity {
             }
         }
 
-        Cadastra.setOnClickListener(new View.OnClickListener() {
+        btnCadastra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Nome.getText().toString().equals("") || Telefone.getText().toString().equals("") || Email.getText().toString().equals("") ||
-                        Usuario.getText().toString().equals("") || Senha.getText().toString().equals("") || SenhaConfirm.getText().toString().equals("")){
+                if(campoNome.getText().toString().equals("") || campoTelefone.getText().toString().equals("") || campoEmail.getText().toString().equals("") ||
+                        campoUsuario.getText().toString().equals("") || campoSenha.getText().toString().equals("") || campoSenhaConfim.getText().toString().equals("")){
                     AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(CadastroActivity.this);
                     dlgAlert.setMessage("Campos Não podem estar vazios ou nenhuma alteração será realizada");
                     dlgAlert.setTitle("Erro");
@@ -67,16 +70,21 @@ public class CadastroActivity extends AppCompatActivity {
                 }
                 else{
                     //manda pro db
-                    startActivity(new Intent(CadastroActivity.this, MainActivity.class));
+                    Usuario user = new Usuario(campoUsuario.getText().toString(), AES.criptografaSenha(campoSenha.getText().toString()),
+                            campoNome.getText().toString(), campoTelefone.getText().toString(), campoEmail.getText().toString(),
+                            strCaminho);
+                    UsersController.criaUsuario(user);
+                    Toast.makeText(CadastroActivity.this, "Usuário criado com sucesso!", Toast.LENGTH_LONG).show();
+
+                    chamaLogin();
                 }
             }
         });
 
-        Imagem.setOnClickListener(new View.OnClickListener() {
+        btnImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, GALERIA_IMAGENS);
             }
         });
@@ -93,9 +101,9 @@ public class CadastroActivity extends AppCompatActivity {
             int columnIndex = c.getColumnIndex(filePath[0]);
             String picturePath = c.getString(columnIndex);
             c.close();
-            Caminho = picturePath;
+            strCaminho = picturePath;
             Bitmap imagemGaleria = (BitmapFactory.decodeFile(picturePath));
-            Imagem.setImageBitmap(imagemGaleria);
+            btnImagem.setImageBitmap(imagemGaleria);
         }
     }
 
@@ -109,6 +117,11 @@ public class CadastroActivity extends AppCompatActivity {
             }
             return;
         }
+    }
+
+    public void chamaLogin()
+    {
+        startActivity(new Intent(this, MainActivity.class));
     }
 
 }

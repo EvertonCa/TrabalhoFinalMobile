@@ -38,4 +38,9 @@ public class ItemsController {
     {
         return MainActivity.db.listarTodosItems(MainActivity.db.criaNomeTabelaUsuario(MainActivity.usuarioLogado.getId()));
     }
+
+    public static Item retornaItem(int index)
+    {
+        return MainActivity.db.selecionaItem(index, MainActivity.db.criaNomeTabelaUsuario(MainActivity.usuarioLogado.getId()));
+    }
 }
