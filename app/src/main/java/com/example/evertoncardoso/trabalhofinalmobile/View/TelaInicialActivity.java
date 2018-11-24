@@ -22,6 +22,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.List;
 import java.util.Vector;
 
 public class TelaInicialActivity extends AppCompatActivity {
@@ -117,10 +118,22 @@ public class TelaInicialActivity extends AppCompatActivity {
 
     public void graficoSemana()
     {
-        double vetPontos[] = { 9, 7, 5, 4, 5 }; // vetor com todos os valores da conta no historico
-        double vetDatas[] = { 1, 2, 3, 4, 5 }; // vetor com a data de todas as mudanças da conta
+        List<Item> lista = ItemsController.listarItens();
 
-        fazGrafico(vetPontos,vetDatas);
+        // vetor com todos os valores da conta no historico
+        double vetPontos;
+        // vetor com a data de todas as mudanças da conta
+        double vetDatas;
+
+        for (int i = 0; i < lista.size(); i++)
+        {
+//            if(lista.get(i).getDia())
+//            lista.get(i).getMes();
+//            lista.get(i).getAno();
+        }
+
+
+//        fazGrafico(vetPontos,vetDatas);
     }
     public void graficoMes()
     {

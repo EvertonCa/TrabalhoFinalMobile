@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".View.SplashActivity">
+        <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,10 +26,6 @@
         <activity android:name=".View.ContaActivity"/>
         <activity android:name=".View.PerfilConfigActivity"/>
         <uses-library android:name="com.google.android.maps" />
-        <activity android:name=".View.CadastroActivity"/>
-        <activity android:name=".View.MainActivity"/>
-        <activity android:name=".View.PesquisarActivity"/>
-        <activity android:name=".View.ResultadosActivity"/>
     </application>
 
 </manifest>
