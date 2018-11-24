@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.evertoncardoso.trabalhofinalmobile.R;
@@ -39,11 +38,11 @@ public class PerfilConfigActivity extends AppCompatActivity {
         setContentView(R.layout.activity_perfilconfig);
         Usuario = findViewById(R.id.txtUsuario);
         Nome = findViewById(R.id.txtNome);
-        txtSenhaAntiga = findViewById(R.id.txtSenhaAntiga);
+        txtSenhaAntiga = findViewById(R.id.txtSenha);
         txtSenhaNova = findViewById(R.id.txtSenhaNova);
         Telefone = findViewById(R.id.edtTelefone);
         Email = findViewById(R.id.edtEmail);
-        SenhaAntiga = findViewById(R.id.edtSenhaAntiga);
+        SenhaAntiga = findViewById(R.id.edtSenha);
         SenhaNova = findViewById(R.id.edtSenhaNova);
         Salva = findViewById(R.id.btnConfirm);
         AlteraSenha = findViewById(R.id.btnSenha);

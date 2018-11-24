@@ -40,4 +40,9 @@
     <string name="seguro">Seguro</string>
     <string name="valor_a_ser_adicionado">Valor a ser Adicionado:</string>
     <string name="valor_a_ser_removido">Valor a ser Removido:</string>
+    <string name="senha1">Senha:</string>
+    <string name="confirma_senha">Confirma Senha:</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="usuario1">Usuario:</string>
+    <string name="nome1">Nome:</string>
 </resources>
