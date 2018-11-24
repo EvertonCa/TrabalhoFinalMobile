@@ -60,6 +60,8 @@ public class PerfilConfigActivity extends AppCompatActivity {
         campoTelefone.setText(user.getTelefone());
         campoEmail.setText(user.getEmail());
         if (!user.getEnderecoFotos().equals("")){
+            Bitmap imagemGaleria = (BitmapFactory.decodeFile(user.getEnderecoFotos()));
+            imgbtnImagem.setImageBitmap(imagemGaleria);
         }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -88,9 +90,12 @@ public class PerfilConfigActivity extends AppCompatActivity {
                     }
                     else{
                         if (AES.criptografaSenha(campoSenhaAntiga.getText().toString()).equals(user.getPassword())){
-                            Usuario user = new Usuario(campoUsuario.getText().toString(), AES.criptografaSenha(campoSenhaNova.getText().toString()),
-                                    campoNome.getText().toString(), campoTelefone.getText().toString(), campoEmail.getText().toString(),
-                                    strCaminho);
+                            user.setEnderecoFotos(strCaminho);
+                            user.setNome(campoNome.getText().toString());
+                            user.setLogin(campoUsuario.getText().toString());
+                            user.setEmail(campoEmail.getText().toString());
+                            user.setTelefone(campoTelefone.getText().toString());
+                            user.setPassword(AES.criptografaSenha(campoSenhaNova.getText().toString()));
                             UsersController.editaUsuario(user);
                             Toast.makeText(PerfilConfigActivity.this, "Usuário editado com sucesso!", Toast.LENGTH_LONG).show();
 
