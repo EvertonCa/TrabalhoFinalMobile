@@ -32,10 +32,10 @@ public class RecuperaSenhaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(mandaEmail(edtEmail.getText().toString(), edtUser.getText().toString())){
-                    // alerta foi enviado
+                    Toast.makeText(RecuperaSenhaActivity.this, "Email enviado!", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    // alerta nao foi preechido tudo
+                    Toast.makeText(RecuperaSenhaActivity.this, "Email NÃO enviado!", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -44,7 +44,6 @@ public class RecuperaSenhaActivity extends AppCompatActivity {
     protected boolean mandaEmail(String txtEmail, String txtUsuario)
     {
         Usuario esquecido = null;
-        String destinatario, nome, usuario, senha;
         List<Usuario> listaUsuarios = UsersController.retornaListaUsuarios();
 
         for(Usuario temp:listaUsuarios)
@@ -54,6 +53,9 @@ public class RecuperaSenhaActivity extends AppCompatActivity {
                 esquecido = temp;
             }
         }
+
+        if(esquecido == null)
+            return false;
 
         final String assunto = "Esqueceu a senha no MaMoney";
         final String texto = "Olá " + esquecido.getNome() + "\nUsuario: "+ esquecido.getLogin() + "\nSenha: "+ AES.descriptografaSenha(esquecido.getPassword());
