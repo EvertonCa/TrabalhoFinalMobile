@@ -1,5 +1,6 @@
 package com.example.evertoncardoso.trabalhofinalmobile.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,6 +27,8 @@ public class ResultadosActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     ArrayList<String> arrayList;
 
+    public static Item item;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +48,9 @@ public class ResultadosActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, conteudo, Toast.LENGTH_LONG).show();
                 String index = conteudo.substring(0, conteudo.indexOf("."));
 
-                Item item = ItemsController.retornaItem(Integer.parseInt(index));
+                item = ItemsController.retornaItem(Integer.parseInt(index));
+
+                chamaEditaItem();
             }
         });
 
@@ -65,5 +70,10 @@ public class ResultadosActivity extends AppCompatActivity {
             arrayList.add(i.getId() +  ". " + i.getDescricao() + " - " + i.getTipo() + " - R$" + i.getValor());
             adapter.notifyDataSetChanged();
         }
+    }
+
+    public void chamaEditaItem()
+    {
+        startActivity(new Intent(this, EditaItemActivity.class));
     }
 }

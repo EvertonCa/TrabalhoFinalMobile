@@ -18,6 +18,9 @@ import com.example.evertoncardoso.trabalhofinalmobile.Model.Item;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class PesquisarActivity extends AppCompatActivity {
@@ -57,6 +60,9 @@ public class PesquisarActivity extends AppCompatActivity {
     public void pesquisarItens(View view)
     {
         List<Item> listaCompleta = ItemsController.listarItens();
+
+        Collections.sort(listaCompleta, new CustomComparator());
+
         listaPeneirada = new ArrayList<Item>();
 
         for(Item i: listaCompleta)
