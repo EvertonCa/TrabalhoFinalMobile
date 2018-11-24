@@ -170,7 +170,7 @@ public class TelaInicialActivity extends AppCompatActivity {
 
     public void chamaPerfil()
     {
-//        startActivity(new Intent(this, TelaInicialActivity.class));
+        startActivity(new Intent(this, PerfilConfigActivity.class));
     }
 
     public void chamaPesquisa()
