@@ -22,6 +22,13 @@ import android.widget.TextView;
 import android.app.AlertDialog;
 
 import com.example.evertoncardoso.trabalhofinalmobile.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 import java.util.Calendar;
@@ -33,6 +40,8 @@ public class ContaActivity extends AppCompatActivity {
     Button Adicionar, Remover, Categoria, Confirma;
     Location location;
     LocationManager locationManager;
+    GoogleMap googleMap;
+    MapView mapa;
     double latitude, longitude;
 
 
@@ -64,6 +73,7 @@ public class ContaActivity extends AppCompatActivity {
         Data = findViewById(R.id.txtData);
         txtDescricao = findViewById(R.id.txtDescricao);
         Descricao = findViewById(R.id.edtDescricao);
+        mapa = findViewById(R.id.mapa);
         //Balanco.setText(valor no DB);
 
         if(ActivityCompat.checkSelfPermission(this,
@@ -84,6 +94,7 @@ public class ContaActivity extends AppCompatActivity {
         Remover.setText(Double.toString(latitude));
         Adicionar.setText(Double.toString(longitude));
 //        System.console().printf(longitude + " " + latitude);
+
 
 
 
