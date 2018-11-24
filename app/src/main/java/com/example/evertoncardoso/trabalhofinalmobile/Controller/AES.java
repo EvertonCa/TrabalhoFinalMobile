@@ -46,4 +46,36 @@ public class AES {
         }
 
     }
+
+    public static String criptografaSenha(String senha)
+    {
+        int k=10;
+        int cripto;
+        String resposta = "";
+        String msgOriginal = senha;
+        for (int i=0; i < msgOriginal.length(); i++)
+        {
+            char c = msgOriginal.charAt(i);
+            int j = (int) c;
+            cripto = j + k;
+            resposta += (char)cripto;
+        }
+        return resposta;
+    }
+
+    public static String descriptografaSenha(String senha)
+    {
+        int k=10;
+        int cripto;
+        String resposta = "";
+        String msgOriginal = senha;
+        for (int i=0; i < msgOriginal.length(); i++)
+        {
+            char c = msgOriginal.charAt(i);
+            int j = (int) c;
+            cripto = j - k;
+            resposta += (char)cripto;
+        }
+        return resposta;
+    }
 }

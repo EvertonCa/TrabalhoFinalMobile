@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //db.addUsuario(new Usuario("admin", "senhaAdmin", "Nome", "Telefone", "email", "endereco/fotos"));
+        //db.addUsuario(new Usuario("admin", AES.criptografaSenha("senhaAdmin"), "Nome", "Telefone", "email", "endereco/fotos"));
 
         //Toast.makeText(MainActivity.this, "Salvo com Sucesso!", Toast.LENGTH_LONG).show();
 
@@ -61,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
         String strLogin = login.getText().toString();
         String strPassword = password.getText().toString();
 
-        AES cripto = new AES();
-        String senhaCripto = cripto.CriptografaMensagem(strPassword);
+        String senhaCripto = AES.criptografaSenha(strPassword);
+        String volta = AES.descriptografaSenha(senhaCripto);
 
-        Log.d("LOG", "Senha sem cripto: " + strPassword + " Senha criptografada: " + senhaCripto);
+        Log.d("LOG", "Senha sem cripto: " + volta + " Senha criptografada: " + senhaCripto);
 
         Usuario usuario = LogInController.verificaLogIn(strLogin, senhaCripto);
 

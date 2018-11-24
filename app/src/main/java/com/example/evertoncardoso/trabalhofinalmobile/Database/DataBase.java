@@ -226,11 +226,11 @@ public class DataBase extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Item selecionaItem(int id)
+    public Item selecionaItem(int id, String TABELA)
     {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABELA_USUARIO, new String[]{COLUNA_ID, COLUNA_DESCRICAO, COLUNA_VALOR, COLUNA_tipo, COLUNA_categoria, COLUNA_dia, COLUNA_mes, COLUNA_ano},
+        Cursor cursor = db.query(TABELA, new String[]{COLUNA_ID, COLUNA_DESCRICAO, COLUNA_VALOR, COLUNA_tipo, COLUNA_categoria, COLUNA_dia, COLUNA_mes, COLUNA_ano},
                 COLUNA_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null, null);
 
         if(cursor != null)
