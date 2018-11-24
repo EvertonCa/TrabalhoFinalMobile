@@ -65,4 +65,8 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="usuario1">Usuario:</string>
     <string name="nome1">Nome:</string>
+    <string name="usuario2">Usuario</string>
+    <string name="nome2">Nome</string>
+    <string name="confirma_a_senha">Confirma a senha</string>
+    <string name="senha2">Senha</string>
 </resources>

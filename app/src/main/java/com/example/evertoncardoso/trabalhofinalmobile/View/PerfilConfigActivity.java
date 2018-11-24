@@ -19,45 +19,48 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.AES;
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.UsersController;
+import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 
 
 
 public class PerfilConfigActivity extends AppCompatActivity {
-    private TextView Usuario, Nome,txtSenhaAntiga, txtSenhaNova;
-    private EditText Telefone, Email, SenhaAntiga, SenhaNova;
-    private Button Salva, AlteraSenha, Cancela;
-    private ImageButton Imagem, Icone;
-    private String Caminho;
+    private TextView txtSenhaAntiga, txtSenhaNova;
+    private EditText campoUsuario, campoNome, campoTelefone, campoEmail, campoSenhaAntiga, campoSenhaNova;
+    private Button btnSalva, btnAlteraSenha, btnCancela;
+    private ImageButton imgbtnImagem;
+    private String strCaminho;
     private final int GALERIA_IMAGENS = 1;
     private final int PERMISSAO_REQUEST = 2;
+    public Usuario user = MainActivity.usuarioLogado;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfilconfig);
-        Usuario = findViewById(R.id.txtUsuario);
-        Nome = findViewById(R.id.txtNome);
+        campoUsuario = findViewById(R.id.edtUsuario);
+        campoNome = findViewById(R.id.edtNome);
         txtSenhaAntiga = findViewById(R.id.txtSenha);
         txtSenhaNova = findViewById(R.id.txtSenhaNova);
-        Telefone = findViewById(R.id.edtTelefone);
-        Email = findViewById(R.id.edtEmail);
-        SenhaAntiga = findViewById(R.id.edtSenha);
-        SenhaNova = findViewById(R.id.edtSenhaNova);
-        Salva = findViewById(R.id.btnConfirm);
-        AlteraSenha = findViewById(R.id.btnSenha);
-        Cancela = findViewById(R.id.btnCancela);
-        Icone = findViewById(R.id.imgbtnCamera);
-        Imagem = findViewById(R.id.imgUsuario);
-        /*
-        Imagem.setImage(DB);
-        Usuario.setText(DB);
-        Nome.setText(DB);
-        Telefone.setText(DB);
-        Email.setText(DB);
-         */
+        campoTelefone = findViewById(R.id.edtTelefone);
+        campoEmail = findViewById(R.id.edtEmail);
+        campoSenhaAntiga = findViewById(R.id.edtSenha);
+        campoSenhaNova = findViewById(R.id.edtSenhaNova);
+        btnSalva = findViewById(R.id.btnConfirm);
+        btnAlteraSenha = findViewById(R.id.btnSenha);
+        btnCancela = findViewById(R.id.btnCancela);
+        imgbtnImagem = findViewById(R.id.imgUsuario);
+        campoUsuario.setText(user.getLogin());
+        campoNome.setText(user.getNome());
+        campoTelefone.setText(user.getTelefone());
+        campoEmail.setText(user.getEmail());
+        if (!user.getEnderecoFotos().equals("")){
+        }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED){
@@ -70,12 +73,12 @@ public class PerfilConfigActivity extends AppCompatActivity {
             }
         }
 
-        Salva.setOnClickListener(new View.OnClickListener() {
+        btnSalva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Cancela.getVisibility() == View.VISIBLE){
-                    if (Telefone.getText().toString().equals("") || Email.getText().toString().equals("") ||
-                            SenhaAntiga.getText().toString().equals("") || SenhaNova.getText().toString().equals("")){
+                if (btnCancela.getVisibility() == View.VISIBLE){
+                    if (campoTelefone.getText().toString().equals("") || campoEmail.getText().toString().equals("") ||
+                            campoSenhaAntiga.getText().toString().equals("") || campoSenhaNova.getText().toString().equals("")){
                         AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(PerfilConfigActivity.this);
                         dlgAlert.setMessage("Campos Não podem estar vazios ou nenhuma alteração será realizada, Caso não deseje modificar a senha clique em Cancelar");
                         dlgAlert.setTitle("Erro");
@@ -84,17 +87,19 @@ public class PerfilConfigActivity extends AppCompatActivity {
                         dlgAlert.create().show();
                     }
                     else{
-                        /*if (SenhaAntiga.getText().toString().equals(BD)){
-                            bdTelefone = Telefone.getText().toString();
-                            bdEmail = Email.getText().toString();
-                            bdSenha = SenhaNova.getText().toString();
-                            dbImage = Image.getImage();
+                        if (AES.criptografaSenha(campoSenhaAntiga.getText().toString()).equals(user.getPassword())){
+                            Usuario user = new Usuario(campoUsuario.getText().toString(), AES.criptografaSenha(campoSenhaNova.getText().toString()),
+                            campoNome.getText().toString(), campoTelefone.getText().toString(), campoEmail.getText().toString(),
+                            strCaminho);
+                            UsersController.editaUsuario(user);
+                            Toast.makeText(PerfilConfigActivity.this, "Usuário editado com sucesso!", Toast.LENGTH_LONG).show();
+
                             txtSenhaAntiga.setVisibility(View.INVISIBLE);
                             txtSenhaNova.setVisibility(View.INVISIBLE);
-                            SenhaAntiga.setVisibility(View.INVISIBLE);
-                            SenhaNova.setVisibility(View.INVISIBLE);
-                            Cancela.setVisibility(View.INVISIBLE);
-                            AlteraSenha.setVisibility(View.VISIBLE);
+                            campoSenhaAntiga.setVisibility(View.INVISIBLE);
+                            campoSenhaNova.setVisibility(View.INVISIBLE);
+                            btnCancela.setVisibility(View.INVISIBLE);
+                            btnAlteraSenha.setVisibility(View.VISIBLE);
                         }
                         else {
                             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(PerfilConfigActivity.this);
@@ -104,13 +109,12 @@ public class PerfilConfigActivity extends AppCompatActivity {
                             dlgAlert.setCancelable(true);
                             dlgAlert.create().show();
                         }
-                        */
-                        SenhaAntiga.setText("");
-                        SenhaNova.setText("");
+                        campoSenhaAntiga.setText("");
+                        campoSenhaNova.setText("");
                     }
                 }
                 else {
-                    if (Telefone.getText().toString().equals("") || Email.getText().toString().equals("")){
+                    if (campoTelefone.getText().toString().equals("") || campoEmail.getText().toString().equals("")){
                         AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(PerfilConfigActivity.this);
                         dlgAlert.setMessage("Campos Não podem estar vazios ou nenhuma alteração será realizada");
                         dlgAlert.setTitle("Erro");
@@ -119,41 +123,41 @@ public class PerfilConfigActivity extends AppCompatActivity {
                         dlgAlert.create().show();
                     }
                     else {
-                        /*
-                        bdTelefone = Telefone.getText().toString();
-                        bdEmail = Email.getText().toString();
-                        dbImage = Image.getImage();
-                         */
+                        Usuario user = new Usuario(campoUsuario.getText().toString(), AES.criptografaSenha(campoSenhaNova.getText().toString()),
+                                campoNome.getText().toString(), campoTelefone.getText().toString(), campoEmail.getText().toString(),
+                                strCaminho);
+                        UsersController.editaUsuario(user);
+                        Toast.makeText(PerfilConfigActivity.this, "Usuário editado com sucesso!", Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
 
-        AlteraSenha.setOnClickListener(new View.OnClickListener() {
+        btnAlteraSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlteraSenha.setVisibility(View.INVISIBLE);
+                btnAlteraSenha.setVisibility(View.INVISIBLE);
                 txtSenhaAntiga.setVisibility(View.VISIBLE);
                 txtSenhaNova.setVisibility(View.VISIBLE);
-                SenhaAntiga.setVisibility(View.VISIBLE);
-                SenhaNova.setVisibility(View.VISIBLE);
-                Cancela.setVisibility(View.VISIBLE);
+                campoSenhaAntiga.setVisibility(View.VISIBLE);
+                campoSenhaNova.setVisibility(View.VISIBLE);
+                btnCancela.setVisibility(View.VISIBLE);
             }
         });
 
-        Cancela.setOnClickListener(new View.OnClickListener() {
+        btnCancela.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 txtSenhaAntiga.setVisibility(View.INVISIBLE);
                 txtSenhaNova.setVisibility(View.INVISIBLE);
-                SenhaAntiga.setVisibility(View.INVISIBLE);
-                SenhaNova.setVisibility(View.INVISIBLE);
-                Cancela.setVisibility(View.INVISIBLE);
-                AlteraSenha.setVisibility(View.VISIBLE);
+                campoSenhaAntiga.setVisibility(View.INVISIBLE);
+                campoSenhaNova.setVisibility(View.INVISIBLE);
+                btnCancela.setVisibility(View.INVISIBLE);
+                btnAlteraSenha.setVisibility(View.VISIBLE);
             }
         });
 
-        Imagem.setOnClickListener(new View.OnClickListener() {
+        imgbtnImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK,
@@ -174,8 +178,8 @@ public class PerfilConfigActivity extends AppCompatActivity {
             String picturePath = c.getString(columnIndex);
             c.close();
             Bitmap imagemGaleria = (BitmapFactory.decodeFile(picturePath));
-            Caminho = picturePath;
-            Imagem.setImageBitmap(imagemGaleria);
+            strCaminho = picturePath;
+            imgbtnImagem.setImageBitmap(imagemGaleria);
         }
     }
 
