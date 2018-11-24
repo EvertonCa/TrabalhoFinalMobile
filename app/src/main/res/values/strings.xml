@@ -18,7 +18,6 @@
     <string name="descreva_a_transa_o">Descreva a transação:</string>
     <string name="todo">TODO</string>
     <string name="modificar_senha">Modificar Senha</string>
-    <string name="email">Email</string>
     <string name="Email">Email:</string>
     <string name="telefone">Telefone</string>
     <string name="Telefone">Telefone:</string>
@@ -45,4 +44,20 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="usuario1">Usuario:</string>
     <string name="nome1">Nome:</string>
+    <string name="perfil">Perfil</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="sair">Sair</string>
+    <string name="tituloGrafico">Resumo da conta</string>
+    <string name="semana">Semana</string>
+    <string name="mes">Mes</string>
+    <string name="ano">Ano</string>
+    <string name="data">Data</string>
+    <string name="dinheiro">Dinheiro</string>
+    <string name="email">Email</string>
+    <string name="enviar">Enviar</string>
+    <string name="splashlogo">SplashLogo</string>
+    <string name="qual_o_intervalo_de_pesquisa">Qual o intervalo de pesquisa?</string>
+    <string name="data_inicial">Data inicial</string>
+    <string name="data_final">Data Final</string>
+    <string name="ir">IR</string>
 </resources>

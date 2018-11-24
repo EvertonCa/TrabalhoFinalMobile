@@ -3,10 +3,17 @@ package com.example.evertoncardoso.trabalhofinalmobile.View;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.AES;
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.ItemsController;
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.LogInController;
+import com.example.evertoncardoso.trabalhofinalmobile.Database.DataBase;
 import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 
@@ -14,21 +21,36 @@ public class MainActivity extends AppCompatActivity {
 
     EditText login;
     EditText password;
+    TextView labelEsqueciSenha;
+
+    public static Usuario usuarioLogado;
+
+    public static DataBase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = new DataBase(this);
         setContentView(R.layout.activity_main);
+        labelEsqueciSenha = findViewById(R.id.labelEsqueciSenha);
+
+        labelEsqueciSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chamaEsqueciSenha();
+            }
+        });
+
+        //db.addUsuario(new Usuario("admin", "senhaAdmin", "Nome", "Telefone", "email", "endereco/fotos"));
+
+        //Toast.makeText(MainActivity.this, "Salvo com Sucesso!", Toast.LENGTH_LONG).show();
+
     }
 
     @Override
     protected void onPause() {
+        Log.d("LOG", "On pause");
         super.onPause();
-        // Cancela para nao ficar nada pendente na tela
-        setResult(RESULT_CANCELED);
-
-        // Fecha a tela
-        finish();
     }
 
     public void verificaLogin(View view)
@@ -37,34 +59,40 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.campoSenha);
 
         String strLogin = login.getText().toString();
-        String strPassword = login.getText().toString();
+        String strPassword = password.getText().toString();
 
-        Usuario usuario;
+        AES cripto = new AES();
+        String senhaCripto = cripto.CriptografaMensagem(strPassword);
 
-        if(CadastrarActivity.usuarioDAO.buscarUsuarioPorLogin(strLogin) != null)
+        Log.d("LOG", "Senha sem cripto: " + strPassword + " Senha criptografada: " + senhaCripto);
+
+        Usuario usuario = LogInController.verificaLogIn(strLogin, senhaCripto);
+
+        if(usuario == null)
         {
-            usuario = CadastrarActivity.usuarioDAO.buscarUsuarioPorLogin(strLogin);
-
-            if(usuario != null)
-            {
-                if(strPassword.equals(usuario.getPassword()))
-                {
-                    chamaMenuPrincipal();
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this, "Senha INCORRETA", Toast.LENGTH_SHORT).show();
-                }
-            }
+            Toast.makeText(MainActivity.this, "Usuário ou Senha Incorreto(s)!", Toast.LENGTH_LONG).show();
+            login.setText("");
+            password.setText("");
         }
         else
         {
-            Toast.makeText(MainActivity.this, "Login NÃO ENCONTRADO", Toast.LENGTH_SHORT).show();
+            usuarioLogado = usuario;
+            ItemsController.preencheListaItems(usuarioLogado);
+            chamaMenuPrincipal();
         }
+    }
+
+    public void teste(View view)
+    {
+        startActivity(new Intent(this, PesquisarActivity.class));
     }
 
     public void chamaMenuPrincipal()
     {
-        //startActivity(new Intent(this, MenuPrincipal.class));
+        startActivity(new Intent(this, TelaInicialActivity.class));
+    }
+    public void chamaEsqueciSenha()
+    {
+        startActivity(new Intent(this, esqueciSenhaActivity.class));
     }
 }
