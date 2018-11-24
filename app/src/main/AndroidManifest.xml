@@ -29,6 +29,7 @@
         <activity android:name=".View.PesquisarActivity"/>
         <activity android:name=".View.ResultadosActivity"/>
         <activity android:name=".View.RecuperaSenhaActivity"/>
+        <activity android:name=".View.EditaItemActivity"/>
     </application>
 
 </manifest>
