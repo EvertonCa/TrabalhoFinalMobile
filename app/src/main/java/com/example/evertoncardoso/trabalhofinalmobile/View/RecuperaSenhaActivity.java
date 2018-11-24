@@ -8,10 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.AES;
+import com.example.evertoncardoso.trabalhofinalmobile.Controller.UsersController;
 import com.example.evertoncardoso.trabalhofinalmobile.Model.Usuario;
 import com.example.evertoncardoso.trabalhofinalmobile.R;
 
-public class esqueciSenhaActivity extends AppCompatActivity {
+import java.util.List;
+
+public class RecuperaSenhaActivity extends AppCompatActivity {
+
     EditText edtUser, edtEmail;
     Button btnEnviar;
 
@@ -40,30 +45,22 @@ public class esqueciSenhaActivity extends AppCompatActivity {
     {
         Usuario esquecido = null;
         String destinatario, nome, usuario, senha;
+        List<Usuario> listaUsuarios = UsersController.retornaListaUsuarios();
 
-        if(txtEmail.isEmpty())
+        for(Usuario temp:listaUsuarios)
         {
-//            esquecido =
+            if(temp.getLogin().equals(txtUsuario) || temp.getEmail().equals(txtEmail))
+            {
+                esquecido = temp;
+            }
         }
-        if(txtUsuario.isEmpty())
-        {
-//            esquecido =
-        }
-//        if(esquecido == null)
-//        {
-//            return false;
-//        }
-        destinatario = "lucaslaheras@hotmail.com";
-        nome = "esquecido";
-        usuario = "burro";
-        senha = "1234";
 
         final String assunto = "Esqueceu a senha no MaMoney";
-        final String texto = "Olá " + nome + "\nUsuario: "+ usuario+"\nSenha: "+ senha;
+        final String texto = "Olá " + esquecido.getNome() + "\nUsuario: "+ esquecido.getLogin() + "\nSenha: "+ AES.descriptografaSenha(esquecido.getPassword());
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/pain");
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{destinatario});
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{esquecido.getEmail()});
         intent.putExtra(Intent.EXTRA_SUBJECT, assunto);
         intent.putExtra(Intent.EXTRA_TEXT, texto);
         try{
@@ -75,5 +72,4 @@ public class esqueciSenhaActivity extends AppCompatActivity {
         }
         return true;
     }
-
 }

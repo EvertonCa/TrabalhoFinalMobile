@@ -1,9 +1,16 @@
 package com.example.evertoncardoso.trabalhofinalmobile.View;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.*;
@@ -15,6 +22,13 @@ import android.widget.TextView;
 import android.app.AlertDialog;
 
 import com.example.evertoncardoso.trabalhofinalmobile.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 import java.util.Calendar;
@@ -24,6 +38,13 @@ public class ContaActivity extends AppCompatActivity {
     EditText Valor, Descricao;
     TextView Remove, Adiciona, Conta, Balanco, Data, txtDescricao, Alimentacao, Casa, Educacao, Imposto, Lazer, Seguro;
     Button Adicionar, Remover, Categoria, Confirma;
+    Location location;
+    LocationManager locationManager;
+    GoogleMap googleMap;
+    MapView mapa;
+    double latitude, longitude;
+
+
     private DatePickerDialog.OnDateSetListener DateSetListener;
     ScrollView ScrollView;
     private static final String TAG = "Data";
@@ -52,7 +73,28 @@ public class ContaActivity extends AppCompatActivity {
         Data = findViewById(R.id.txtData);
         txtDescricao = findViewById(R.id.txtDescricao);
         Descricao = findViewById(R.id.edtDescricao);
+        mapa = findViewById(R.id.mapa);
         //Balanco.setText(valor no DB);
+
+        if(ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+            // se nao tem permicao para acessar o GPS
+        }
+        else{
+            locationManager = (LocationManager)
+                    getSystemService(Context.LOCATION_SERVICE);
+            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        }
+        if(location != null) {
+            longitude = location.getLongitude();
+            latitude = location.getLatitude();
+        }
+
+        Remover.setText(Double.toString(latitude));
+        Adicionar.setText(Double.toString(longitude));
+//        System.console().printf(longitude + " " + latitude);
+
 
 
 
@@ -241,5 +283,5 @@ public class ContaActivity extends AppCompatActivity {
             }
         };
 
-        }
+    }
 }
